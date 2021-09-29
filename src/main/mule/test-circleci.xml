@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="99d4134b-159b-41af-80ba-56b4333dca5d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="test-circleciFlow" doc:id="6a6f2539-b9bb-4236-afc9-78201804886a" >
+		<http:listener doc:name="Listener" doc:id="0b73b336-cf03-4823-b71c-4e1fa85951e4" config-ref="HTTP_Listener_config" path="/circleci"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e41f99c9-e88d-44c3-a633-12eaa4578b81" message="Request Received"/>
+	</flow>
+</mule>
