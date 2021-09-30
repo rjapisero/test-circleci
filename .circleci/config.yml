@@ -1,14 +1,9 @@
 version: 2.1
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build:
-          context: mule
+
 jobs:
   build:
     docker:
-      - image: 'circleci/openjdk:8-jdk'
+      - image: 'vacasa/mule-logging-connector'
         environment:
           MULE_VERSION: 4.3.0
           MULE_APP_NAME: test-circleci
