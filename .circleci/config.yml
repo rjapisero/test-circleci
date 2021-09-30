@@ -1,18 +1,15 @@
 version: 2.1
-
 jobs:
   build:
     docker:
-      - image: 'vacasa/mule-logging-connector'
-        environment:
-          MULE_VERSION: 4.3.0
-          MULE_APP_NAME: test-circleci
-          MULE_ENV: DEV
-          MULE_WORKER_TYP: MICRO
-          MULE_WORKER: 1
+      - image: 'cimg/openjdk:11.0'
     steps:
       - checkout
       - run:
           name: Build
           command: |
-            mvn clean compile -s settings.xml
+            mvn -DskipTests clean package -s settings.xml
+workflows:
+  sample:
+    jobs:
+      - build
